@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Shader" path="res://shaders/pt1/3D_gradients.gdshader" id="1_sypcr"]
+[ext_resource type="Shader" path="res://shaders/pt1/3D_pattern_manipulation.gdshader" id="2_lrcmk"]
+[ext_resource type="Shader" path="res://shaders/pt1/3D_normals.gdshader" id="3_v0cxv"]
+[ext_resource type="Shader" path="res://shaders/pt1/blending.gdshader" id="4_mqpwg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7lnq8"]
+render_priority = 0
+shader = ExtResource( "3_v0cxv" )
+
+[sub_resource type="SphereMesh" id="SphereMesh_2y70r"]
+material = SubResource( "ShaderMaterial_7lnq8" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqq5n"]
+render_priority = 0
+shader = ExtResource( "1_sypcr" )
+shader_param/COLOR_A = Color(0.71, 0.11, 0.64, 1)
+shader_param/COLOR_B = Color(0.64, 0.92, 1, 1)
+shader_param/COLOR_START = 0.0
+shader_param/COLOR_END = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_laviw"]
+material = SubResource( "ShaderMaterial_rqq5n" )
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sp8rr"]
+render_priority = 0
+shader = ExtResource( "2_lrcmk" )
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j56gt"]
+material = SubResource( "ShaderMaterial_sp8rr" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3eck1"]
+render_priority = 0
+shader = ExtResource( "4_mqpwg" )
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ksryl"]
+material = SubResource( "ShaderMaterial_3eck1" )
+top_radius = 1.5
+bottom_radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bh02y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8gqrg"]
+material = SubResource( "StandardMaterial3D_bh02y" )
+
+[node name="3DShaderTest" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+directional_shadow_mode = 0
+
+[node name="Normals" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.97437, -0.224951, 0, 0.224951, 0.97437, 0, 0, 0)
+mesh = SubResource( "SphereMesh_2y70r" )
+
+[node name="Gradient" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+mesh = SubResource( "QuadMesh_laviw" )
+
+[node name="PatternManipulation" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69981, 0, 0)
+mesh = SubResource( "CylinderMesh_j56gt" )
+
+[node name="Blending" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Effect" type="MeshInstance3D" parent="Blending"]
+mesh = SubResource( "CylinderMesh_ksryl" )
+
+[node name="Object" type="MeshInstance3D" parent="Blending"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.03986)
+mesh = SubResource( "SphereMesh_8gqrg" )
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.892058, 0.451921, 0, -0.451921, 0.892058, 12, 1.77389, 4.36659)

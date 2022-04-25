@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bxl5uho4nld6o"
+path.s3tc="res://.godot/imported/healthbar.png-2f51e13309e56c58a0c26f3db29de9a0.s3tc.ctex"
+path.etc2="res://.godot/imported/healthbar.png-2f51e13309e56c58a0c26f3db29de9a0.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc", "etc2"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://shaders/assignment-one/healthbar.png"
+dest_files=["res://.godot/imported/healthbar.png-2f51e13309e56c58a0c26f3db29de9a0.s3tc.ctex", "res://.godot/imported/healthbar.png-2f51e13309e56c58a0c26f3db29de9a0.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/bptc_ldr=0
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/size_limit=0
+detect_3d/compress_to=0

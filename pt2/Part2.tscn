@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://oqigfl5s68te"]
+
+[ext_resource type="Shader" path="res://shaders/pt2/SDFs.gdshader" id="1_37h67"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjua5"]
+render_priority = 0
+shader = ExtResource( "1_37h67" )
+
+[sub_resource type="QuadMesh" id="QuadMesh_2aja4"]
+material = SubResource( "ShaderMaterial_vjua5" )
+
+[node name="Part2" type="Node3D"]
+
+[node name="SDFs" type="MeshInstance3D" parent="."]
+mesh = SubResource( "QuadMesh_2aja4" )

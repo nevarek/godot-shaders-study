@@ -1,0 +1,206 @@
+[gd_scene load_steps=36 format=3 uid="uid://bxiix73ueq2em"]
+
+[ext_resource type="Shader" path="res://shaders/pt3_lighting/lambertian_diffuse.gdshader" id="1_1mut7"]
+[ext_resource type="Shader" path="res://shaders/pt3_lighting/specular_phong.gdshader" id="1_vhe47"]
+[ext_resource type="Shader" path="res://shaders/pt3_lighting/specular_blinn-phong.gdshader" id="3_vijix"]
+[ext_resource type="Shader" path="res://shaders/pt3_lighting/remap_compositing.gdshader" id="4_1q5d0"]
+[ext_resource type="Shader" path="res://shaders/pt3_lighting/fresnel.gdshader" id="4_ux88q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yt11"]
+render_priority = 0
+shader = ExtResource( "1_1mut7" )
+
+[sub_resource type="BoxMesh" id="BoxMesh_4ld4k"]
+material = SubResource( "ShaderMaterial_1yt11" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmqbw"]
+render_priority = 0
+shader = ExtResource( "1_1mut7" )
+
+[sub_resource type="SphereMesh" id="SphereMesh_5htkk"]
+material = SubResource( "ShaderMaterial_qmqbw" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ajbo"]
+render_priority = 0
+shader = ExtResource( "1_1mut7" )
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nlrn4"]
+material = SubResource( "ShaderMaterial_0ajbo" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4fwjt"]
+render_priority = 0
+shader = ExtResource( "1_vhe47" )
+shader_param/gloss = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0orn"]
+material = SubResource( "ShaderMaterial_4fwjt" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2g7y5"]
+render_priority = 0
+shader = ExtResource( "1_vhe47" )
+shader_param/gloss = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_dtuqf"]
+material = SubResource( "ShaderMaterial_2g7y5" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ck5pu"]
+render_priority = 0
+shader = ExtResource( "1_vhe47" )
+shader_param/gloss = 30.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wjpjv"]
+material = SubResource( "ShaderMaterial_ck5pu" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psmn3"]
+render_priority = 0
+shader = ExtResource( "3_vijix" )
+shader_param/gloss = 277.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_467lm"]
+material = SubResource( "ShaderMaterial_psmn3" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vwtu"]
+render_priority = 0
+shader = ExtResource( "3_vijix" )
+shader_param/gloss = 300.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_1hr76"]
+material = SubResource( "ShaderMaterial_3vwtu" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7ofn"]
+render_priority = 0
+shader = ExtResource( "3_vijix" )
+shader_param/gloss = 240.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r6bip"]
+material = SubResource( "ShaderMaterial_f7ofn" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7ug2"]
+render_priority = 0
+shader = ExtResource( "4_1q5d0" )
+shader_param/gloss = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_ydbar"]
+material = SubResource( "ShaderMaterial_m7ug2" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jaimb"]
+render_priority = 0
+shader = ExtResource( "4_1q5d0" )
+shader_param/gloss = null
+
+[sub_resource type="SphereMesh" id="SphereMesh_41ggv"]
+material = SubResource( "ShaderMaterial_jaimb" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vpjp6"]
+render_priority = 0
+shader = ExtResource( "4_1q5d0" )
+shader_param/gloss = null
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tyhxy"]
+material = SubResource( "ShaderMaterial_vpjp6" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xthca"]
+render_priority = 0
+shader = ExtResource( "4_ux88q" )
+shader_param/gloss = null
+
+[sub_resource type="BoxMesh" id="BoxMesh_c88v8"]
+material = SubResource( "ShaderMaterial_xthca" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4o4a6"]
+render_priority = 0
+shader = ExtResource( "4_ux88q" )
+shader_param/gloss = null
+
+[sub_resource type="SphereMesh" id="SphereMesh_pm1il"]
+material = SubResource( "ShaderMaterial_4o4a6" )
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d6xb"]
+render_priority = 0
+shader = ExtResource( "4_ux88q" )
+shader_param/gloss = null
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aulsa"]
+material = SubResource( "ShaderMaterial_5d6xb" )
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.695349, 0.718673, 0, -0.718673, 0.695349, 0, 7, 0)
+light_color = Color(0.678431, 0.396078, 1, 1)
+sky_mode = 1
+
+[node name="Lambertian" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lambertian"]
+mesh = SubResource( "BoxMesh_4ld4k" )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Lambertian"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+mesh = SubResource( "SphereMesh_5htkk" )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Lambertian"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+mesh = SubResource( "CapsuleMesh_nlrn4" )
+skeleton = NodePath("../..")
+
+[node name="Specular Phong" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Specular Phong"]
+mesh = SubResource( "BoxMesh_d0orn" )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Specular Phong"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+mesh = SubResource( "SphereMesh_dtuqf" )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Specular Phong"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+mesh = SubResource( "CapsuleMesh_wjpjv" )
+skeleton = NodePath("../..")
+
+[node name="Specular Blinn-Phong" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Specular Blinn-Phong"]
+mesh = SubResource( "BoxMesh_467lm" )
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Specular Blinn-Phong"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+mesh = SubResource( "SphereMesh_1hr76" )
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Specular Blinn-Phong"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+mesh = SubResource( "CapsuleMesh_r6bip" )
+
+[node name="RemapCompositing" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RemapCompositing"]
+mesh = SubResource( "BoxMesh_ydbar" )
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RemapCompositing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+mesh = SubResource( "SphereMesh_41ggv" )
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RemapCompositing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+mesh = SubResource( "CapsuleMesh_tyhxy" )
+
+[node name="Fresnel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fresnel"]
+mesh = SubResource( "BoxMesh_c88v8" )
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Fresnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+mesh = SubResource( "SphereMesh_pm1il" )
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Fresnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+mesh = SubResource( "CapsuleMesh_aulsa" )

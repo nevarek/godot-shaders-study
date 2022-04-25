@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Shader" path="res://shaders/pt1/gradients.gdshader" id="1_v7e2w"]
+[ext_resource type="Shader" path="res://shaders/pt1/pattern-manipulation.gdshader" id="1_vu2t4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8i6nm"]
+shader = ExtResource( "1_v7e2w" )
+shader_param/COLOR_A = null
+shader_param/COLOR_B = null
+shader_param/COLOR_START = null
+shader_param/COLOR_END = null
+
+[sub_resource type="Texture2D" id="Texture2D_4be3k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oi5dm"]
+shader = ExtResource( "1_vu2t4" )
+
+[node name="CanvasShaderTest" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/vseparation = 30
+theme_override_constants/hseparation = 30
+columns = 5
+
+[node name="Gradients" type="TextureRect" parent="CanvasLayer/GridContainer"]
+material = SubResource( "ShaderMaterial_8i6nm" )
+minimum_size = Vector2(200, 200)
+offset_right = 200.0
+offset_bottom = 200.0
+texture = SubResource( "Texture2D_4be3k" )
+
+[node name="PatternManipulation" type="TextureRect" parent="CanvasLayer/GridContainer"]
+material = SubResource( "ShaderMaterial_oi5dm" )
+minimum_size = Vector2(200, 200)
+offset_left = 230.0
+offset_right = 430.0
+offset_bottom = 200.0
+texture = SubResource( "Texture2D_4be3k" )
